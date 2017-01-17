@@ -1,12 +1,12 @@
-%% ÆÚ»õ³ÌĞò»¯½»Ò×CTP-matlab demo 2017-01-13
-%%%%% 1.ÔËĞĞ³ÌĞòÇ°ÇëÏÈÅäÖÃctp»·¾³£¬²¢ÇÒÈ·±£matlabÊÇ32Î»µÄ£¬ÏêÏ¸ÅäÖÃ¹ı³ÌÇë²é¿´ReadMe.txt
-%%%%% 2.Ôö¼ÓÈÕÖ¾±£´æ¹¦ÄÜ£¬20170116
-%%%%% ½ğÈÚ´´ĞÂÊµÑéÊÒ
+%% æœŸè´§ç¨‹åºåŒ–äº¤æ˜“CTP-matlab demo 2017-01-13
+%%%%% 1.è¿è¡Œç¨‹åºå‰è¯·å…ˆé…ç½®ctpç¯å¢ƒï¼Œå¹¶ä¸”ç¡®ä¿matlabæ˜¯32ä½çš„ï¼Œè¯¦ç»†é…ç½®è¿‡ç¨‹è¯·æŸ¥çœ‹ReadMe.txt
+%%%%% 2.å¢åŠ æ—¥å¿—ä¿å­˜åŠŸèƒ½ï¼Œ20170116
+%%%%% é‡‘èåˆ›æ–°å®éªŒå®¤
 %%%%% Version1.0
 %%%%% 2017-01-13
 %%%%% By: Wayne
 
-% Çå³ı±äÁ¿
+% æ¸…é™¤å˜é‡
 clc
 clear
 clear global
@@ -16,34 +16,34 @@ addpath(genpath(pwd))
 eval(['diary logs\log',num2str(year(now)*10000+month(now)*100+day(now)),'.txt'])
 diary on
 
-%% ¶¨ÒåÈ«¾Ö±äÁ¿
+%% å®šä¹‰å…¨å±€å˜é‡
 global main
-main = []; %Ò²¿ÉÒÔ°ÑÖ®Ç°µÄmainÎÄ¼ş±£´æ£¬Ã¿´ÎÆô¶¯load
+main = []; %ä¹Ÿå¯ä»¥æŠŠä¹‹å‰çš„mainæ–‡ä»¶ä¿å­˜ï¼Œæ¯æ¬¡å¯åŠ¨load
 
-%% CTPµÇÂ¼
-main.account = '043054';%ÊäÈëSimnowÕËºÅ£¬Èç¹ûÃ»ÓĞ£¬ÇëµÇÂ¼www.simnow.com.cn½øĞĞ×¢²á
-main.password = '19880123';%ÊäÈëÃÜÂë
-main.actctp=f_trade_login('ÉÏÆÚ¼¼Êõ',main.account,main.password);% ÆÚ»õctpÕËºÅµÇÂ½£»
+%% CTPç™»å½•
+main.account = '';%è¾“å…¥Simnowè´¦å·ï¼Œå¦‚æœæ²¡æœ‰ï¼Œè¯·ç™»å½•www.simnow.com.cnè¿›è¡Œæ³¨å†Œ
+main.password = '';%è¾“å…¥å¯†ç 
+main.actctp=f_trade_login('ä¸ŠæœŸæŠ€æœ¯',main.account,main.password);% æœŸè´§ctpè´¦å·ç™»é™†ï¼›
 
-main.instrumentID='au1706';%ºÏÔ¼´úÂë
-SubscribeMD(main.actctp,main.instrumentID); % ¶©ÔÄĞĞÇé
-disp(['========',datestr(now,31),'  ¶©ÔÄµÄÆÚ»õÆ·ÖÖ£º',main.instrumentID,'========']);
+main.instrumentID='au1706';%åˆçº¦ä»£ç 
+SubscribeMD(main.actctp,main.instrumentID); % è®¢é˜…è¡Œæƒ…
+disp(['========',datestr(now,31),'  è®¢é˜…çš„æœŸè´§å“ç§ï¼š',main.instrumentID,'========']);
 disp('')
 
 
 
-%% ¶¨Òå²ßÂÔ
+%% å®šä¹‰ç­–ç•¥
 startStrategy;
-disp('========²ßÂÔÉú³ÉÍê±Ï=========')
+disp('========ç­–ç•¥ç”Ÿæˆå®Œæ¯•=========')
 
 
-%% ×¢²áCTP
-main.actctp.registerevent({'OnTrade' 'f_event_onTrade'});% ³É½»ÊÂ¼ş×¢²á
-main.actctp.registerevent({'OnMarketData' 'f_event_market'});% ĞĞÇéÊÂ¼ş×¢²á
+%% æ³¨å†ŒCTP
+main.actctp.registerevent({'OnTrade' 'f_event_onTrade'});% æˆäº¤äº‹ä»¶æ³¨å†Œ
+main.actctp.registerevent({'OnMarketData' 'f_event_market'});% è¡Œæƒ…äº‹ä»¶æ³¨å†Œ
 
-disp('========×¢²áCTPÍê³É=========')
+disp('========æ³¨å†ŒCTPå®Œæˆ=========')
 
-%% ¹Ø±ÕCTP ºÍtimer
+%% å…³é—­CTP å’Œtimer
 % main.actctp.unregisterallevents;  
 % closetimer
 
